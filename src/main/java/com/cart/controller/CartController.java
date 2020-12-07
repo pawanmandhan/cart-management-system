@@ -15,6 +15,7 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
+    // API [5]
     @GetMapping("/product-status/{productId}")
     public ProductStatusDTO productStatus(@PathVariable Long productId) {
         return cartService.productStatus(productId);
