@@ -1,5 +1,6 @@
 package com.cart.model;
 
+import com.cart.util.CartStatus;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,5 +20,8 @@ public class Cart {
 
     @OneToMany
     private List<Product> products;
+
+    @Column
+    private CartStatus status;
 
 }
