@@ -9,11 +9,7 @@ import java.util.List;
 public class CartDTO {
 
     private Long id;
-
     private Long userId;
-
     private List<ProductDTO> products;
-
     private CartStatus status;
-
 }

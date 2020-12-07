@@ -5,11 +5,13 @@ import com.cart.dto.CartDTO;
 import com.cart.dto.ProductStatusDTO;
 import com.cart.util.CartStatus;
 
+import java.util.List;
+
 public interface CartService {
 
     public ProductStatusDTO productStatus(Long productId);
 
-    public CartDTO getCartsByStatus(CartStatus status);
+    public List<CartDTO> getCartsByStatus(CartStatus status);
 
-    public CartByProductCategoryDTO getCartsByProductCategory(Long productCategoryId);
+    public CartByProductCategoryDTO getCartsByCategory(Long productCategoryId);
 }
