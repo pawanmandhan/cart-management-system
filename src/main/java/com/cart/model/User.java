@@ -24,7 +24,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToOne
+    @OneToMany
     private Cart cart;
 
 }
