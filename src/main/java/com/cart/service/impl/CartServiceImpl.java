@@ -1,4 +1,4 @@
-package com.cart.serviceimpl;
+package com.cart.service.impl;
 
 import com.cart.dto.ProductStatusDTO;
 import com.cart.service.CartService;
