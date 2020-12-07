@@ -23,13 +23,4 @@ public class Product {
     @OneToMany
     private List<ProductCategory> categories;
 
-    @Column(name = "ordered")
-    private Long ordered;
-
-    @Column(name = "discarded")
-    private Long discarded;
-
-    @Column(name = "active")
-    private Long active;
-
 }
