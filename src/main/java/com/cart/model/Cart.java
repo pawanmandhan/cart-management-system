@@ -15,7 +15,7 @@ public class Cart {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private User user;
 
     @OneToMany

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,6 +26,6 @@ public class User {
     private String email;
 
     @OneToMany
-    private Cart cart;
+    private List<Cart> cart;
 
 }
