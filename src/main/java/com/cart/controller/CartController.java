@@ -1,5 +1,6 @@
 package com.cart.controller;
 
+import com.cart.dto.CartByProductCategoryDTO;
 import com.cart.dto.CartDTO;
 import com.cart.dto.ProductStatusDTO;
 import com.cart.service.CartService;
@@ -20,8 +21,15 @@ public class CartController {
     // API [1]
     @GetMapping("/{status}")
     public CartDTO getCartsByStatus(@PathVariable CartStatus status) {
-        return null;
+        return cartService.getCartsByStatus(status);
     }
+
+    // API [4]
+    @GetMapping("/{productCategoryId}")
+    public CartByProductCategoryDTO getCartsByProductCategory(@PathVariable Long productCategoryId) {
+        return cartService.getCartsByProductCategory(productCategoryId);
+    }
+
 
     // API [5]
     @GetMapping("/product-status/{productId}")

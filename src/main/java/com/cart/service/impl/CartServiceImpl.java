@@ -1,5 +1,6 @@
 package com.cart.service.impl;
 
+import com.cart.dto.CartByProductCategoryDTO;
 import com.cart.dto.CartDTO;
 import com.cart.dto.ProductStatusDTO;
 import com.cart.service.CartService;
@@ -10,12 +11,18 @@ import org.springframework.stereotype.Service;
 public class CartServiceImpl implements CartService {
 
     @Override
-    public ProductStatusDTO productStatus(Long productId) {
+    public CartDTO getCartsByStatus(CartStatus status) {
         return null;
     }
 
     @Override
-    public CartDTO getCartsByStatus(CartStatus status) {
+    public CartByProductCategoryDTO getCartsByProductCategory(Long productCategoryId) {
         return null;
     }
+
+    @Override
+    public ProductStatusDTO productStatus(Long productId) {
+        return null;
+    }
+
 }
