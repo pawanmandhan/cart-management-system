@@ -15,10 +15,11 @@ public class Cart {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     @OneToMany
+    @Column(unique = false, nullable = true)
     private List<Product> products;
 
     @Column

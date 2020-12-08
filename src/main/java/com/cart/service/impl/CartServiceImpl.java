@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -31,18 +33,23 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public CartByProductCategoryDTO getCartsByCategory(Long productCategoryId) {
+    public Map<CartStatus, Long> getCartsByCategory(Long productCategoryId) {
         CartByProductCategoryDTO cartByProductCategoryDTO = new CartByProductCategoryDTO();
         List<Cart> carts = cartRepository.getByProducts_categories_id(productCategoryId);
 
-        int orderedCarts = (int) carts.stream().filter(cart -> cart.getStatus() == CartStatus.ORDERED).count();
-        int activeCarts = (int) carts.stream().filter(cart -> cart.getStatus() == CartStatus.ACTIVE).count();
-        int discardedCarts = (int) carts.stream().filter(cart -> cart.getStatus() == CartStatus.DISCARDED).count();
-        cartByProductCategoryDTO.setOrderedCartDTO(orderedCarts);
-        cartByProductCategoryDTO.setActiveCartDTO(activeCarts);
-        cartByProductCategoryDTO.setDiscardedCartDTO(discardedCarts);
+//        int orderedCarts = (int) carts.stream().filter(cart -> cart.getStatus() == CartStatus.ORDERED).count();
+//        int activeCarts = (int) carts.stream().filter(cart -> cart.getStatus() == CartStatus.ACTIVE).count();
+//        int discardedCarts = (int) carts.stream().filter(cart -> cart.getStatus() == CartStatus.DISCARDED).count();
+//        cartByProductCategoryDTO.setOrderedCartDTO(orderedCarts);
+//        cartByProductCategoryDTO.setActiveCartDTO(activeCarts);
+//        cartByProductCategoryDTO.setDiscardedCartDTO(discardedCarts);
 
-        return cartByProductCategoryDTO;
+        Map<CartStatus, Long> result = carts.stream()
+                .collect(Collectors.groupingBy(Cart::getStatus, Collectors.counting()));
+
+        System.out.println(result);
+
+        return result;
     }
 
     @Override

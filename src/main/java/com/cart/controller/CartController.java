@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/carts")
@@ -31,7 +32,7 @@ public class CartController {
 
     // API [4]
     @GetMapping("/bycategory/{categoryId}")
-    public CartByProductCategoryDTO getCartsByCategory(@PathVariable Long categoryId) {
+    public Map<CartStatus, Long> getCartsByCategory(@PathVariable Long categoryId) {
         return cartService.getCartsByCategory(categoryId);
     }
 

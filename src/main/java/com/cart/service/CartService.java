@@ -6,6 +6,7 @@ import com.cart.dto.ProductStatusDTO;
 import com.cart.util.CartStatus;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CartService {
 
@@ -13,5 +14,5 @@ public interface CartService {
 
     public List<CartDTO> getCartsByStatus(CartStatus status);
 
-    public CartByProductCategoryDTO getCartsByCategory(Long productCategoryId);
+    public Map<CartStatus, Long> getCartsByCategory(Long productCategoryId);
 }
