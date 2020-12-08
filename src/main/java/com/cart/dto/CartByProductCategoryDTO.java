@@ -1,16 +1,18 @@
 package com.cart.dto;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @Data
+@RequiredArgsConstructor
 public class CartByProductCategoryDTO {
 
-    private List<CartDTO> orderedCartDTO;
+    private Integer orderedCartDTO;
 
-    private List<CartDTO> discardedCartDTO;
+    private Integer discardedCartDTO;
 
-    private List<CartDTO> activeCartDTO;
+    private Integer activeCartDTO;
 
 }

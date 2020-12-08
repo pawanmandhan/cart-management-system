@@ -30,7 +30,7 @@ public class CartController {
     }
 
     // API [4]
-    @GetMapping("/{categoryId}")
+    @GetMapping("/bycategory/{categoryId}")
     public CartByProductCategoryDTO getCartsByCategory(@PathVariable Long categoryId) {
         return cartService.getCartsByCategory(categoryId);
     }

@@ -32,7 +32,17 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public CartByProductCategoryDTO getCartsByCategory(Long productCategoryId) {
-        return null;
+        CartByProductCategoryDTO cartByProductCategoryDTO = new CartByProductCategoryDTO();
+        List<Cart> carts = cartRepository.getByProducts_categories_id(productCategoryId);
+
+        int orderedCarts = (int) carts.stream().filter(cart -> cart.getStatus() == CartStatus.ORDERED).count();
+        int activeCarts = (int) carts.stream().filter(cart -> cart.getStatus() == CartStatus.ACTIVE).count();
+        int discardedCarts = (int) carts.stream().filter(cart -> cart.getStatus() == CartStatus.DISCARDED).count();
+        cartByProductCategoryDTO.setOrderedCartDTO(orderedCarts);
+        cartByProductCategoryDTO.setActiveCartDTO(activeCarts);
+        cartByProductCategoryDTO.setDiscardedCartDTO(discardedCarts);
+
+        return cartByProductCategoryDTO;
     }
 
     @Override
