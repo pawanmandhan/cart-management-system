@@ -1,8 +1,6 @@
 package com.cart.service;
 
-import com.cart.dto.CartByProductCategoryDTO;
 import com.cart.dto.CartDTO;
-import com.cart.dto.ProductStatusDTO;
 import com.cart.util.CartStatus;
 
 import java.util.List;

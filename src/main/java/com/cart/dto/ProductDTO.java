@@ -1,6 +1,5 @@
 package com.cart.dto;
 
-import com.cart.model.ProductCategory;
 import lombok.Data;
 
 import java.util.List;
