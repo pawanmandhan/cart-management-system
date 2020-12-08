@@ -1,13 +1,17 @@
 package com.cart.model;
 
 import com.cart.util.CartStatus;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cart {
 
     @Id

@@ -10,7 +10,7 @@ import java.util.Map;
 
 public interface CartService {
 
-    public ProductStatusDTO productStatus(Long productId);
+    public Map<CartStatus, Long> productStatus(Long productId);
 
     public List<CartDTO> getCartsByStatus(CartStatus status);
 

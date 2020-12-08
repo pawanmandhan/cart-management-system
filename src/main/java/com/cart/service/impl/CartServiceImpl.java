@@ -1,6 +1,8 @@
 package com.cart.service.impl;
 
-import com.cart.dto.*;
+import com.cart.dto.CartDTO;
+import com.cart.dto.ProductCategoryDTO;
+import com.cart.dto.ProductDTO;
 import com.cart.model.Cart;
 import com.cart.model.Product;
 import com.cart.model.ProductCategory;
@@ -34,7 +36,6 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Map<CartStatus, Long> getCartsByCategory(Long productCategoryId) {
-        CartByProductCategoryDTO cartByProductCategoryDTO = new CartByProductCategoryDTO();
         List<Cart> carts = cartRepository.getByProducts_categories_id(productCategoryId);
 
         Map<CartStatus, Long> result = carts.stream()
@@ -46,21 +47,30 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public ProductStatusDTO productStatus(Long productId) {
-        return null;
+    public Map<CartStatus, Long> productStatus(Long productId) {
+        List<Cart> carts = cartRepository.getByProducts_id(productId);
+
+        Map<CartStatus, Long> result = carts.stream()
+                .collect(Collectors.groupingBy(Cart::getStatus, Collectors.counting()));
+
+        return result;
     }
 
     private CartDTO prepareCartDTO(Cart cart) {
         CartDTO cartDTO = new CartDTO();
         cartDTO.setId(cart.getId());
-        cartDTO.setUserId(cart.getUser().getId());
+        if (cart.getUser() != null)
+            cartDTO.setUserId(cart.getUser().getId());
         cartDTO.setStatus(cart.getStatus());
 
         List<ProductDTO> productDTOs = new ArrayList<>();
-        cart.getProducts().forEach((Product product) -> {
-            ProductDTO productDTO = prepareProductDTO(product);
-            productDTOs.add(productDTO);
-        });
+
+        if (cart.getProducts() != null) {
+            cart.getProducts().forEach((Product product) -> {
+                ProductDTO productDTO = prepareProductDTO(product);
+                productDTOs.add(productDTO);
+            });
+        }
         cartDTO.setProducts(productDTOs);
 
         return cartDTO;
