@@ -10,7 +10,7 @@ public interface CartService {
 
     public Map<CartStatus, Long> productStatus(Long productId);
 
-    public List<CartDTO> getCartsByStatus(CartStatus status);
+    public List<CartDTO> getCartsByStatus(CartStatus status, int pageNo, int pageSize);
 
     public Map<CartStatus, Long> getCartsByCategory(Long productCategoryId);
 }

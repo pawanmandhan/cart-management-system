@@ -4,10 +4,7 @@ import com.cart.dto.CartDTO;
 import com.cart.service.CartService;
 import com.cart.util.CartStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -22,8 +19,8 @@ public class CartController {
 
     // API [1]
     @GetMapping("/by-status/{status}")
-    public List<CartDTO> getCartsByStatus(@Valid @PathVariable CartStatus status) {
-        return cartService.getCartsByStatus(status);
+    public List<CartDTO> getCartsByStatus(@Valid @PathVariable CartStatus status, @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo, @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize) {
+        return cartService.getCartsByStatus(status, pageNo, pageSize);
     }
 
     // API [4]
